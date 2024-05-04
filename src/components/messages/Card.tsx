@@ -19,10 +19,12 @@ const Card: React.FC<CardProps> = ({ player, message }) => {
           alt={player.name}
           className="w-4 h-4 rounded-full border border-lightgray"
         />
-        <p className="border border-lightgray rounded-[4px] w-8 text-center text-lightergray">
-          {player.id}
-        </p>
-        <p className="font-heading font-italic -mb-1.5">
+        <div className="border border-lightgray rounded-[4px] w-8 h-4">
+          <p className="text-center text-lightergray -translate-y-[1px]">
+            {player.id}
+          </p>
+        </div>
+        <p className="font-heading font-italic">
           <span className="text-lightgreen">{player.name.split(" ")[0]}</span>{" "}
           <span className="text-white">{player.name.split(" ")[1]}</span>
         </p>
