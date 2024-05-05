@@ -1,3 +1,4 @@
+import ActionProgress from "../../components/actionProgress/main";
 import Messages from "../../components/messages/main";
 import Notifications from "../../components/notifications/main";
 import { notificationType } from "../../components/notifications/types";
@@ -24,6 +25,7 @@ const Home: React.FC<HomeProps> = ({ className }) => {
       <Messages />
       <Notifications notifications={notifications} />
       <Stats />
+      <ActionProgress name="Opening Crate" progress={32} />
     </div>
   );
 };
