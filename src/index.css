@@ -22,6 +22,9 @@
 .font-noto {
   font-family: 'Noto Sans', sans-serif;
 }
+.font-kanit {
+  font-family: 'Kanit', sans-serif;
+}
 
 /* UTILITY CLASSES */
 .bg-gradient-black {

@@ -22,7 +22,7 @@ const Messages = () => {
 
   return (
     <div className="space-y-2 w-[325px] 2xl:w-[400px] text-[10px] 2xl:text-[14px]">
-      <div className="max-h-[248px] overflow-y-auto space-y-2 hide-scrollbar">
+      <div className="max-h-[278px] overflow-y-auto space-y-2 hide-scrollbar">
         {messages.map((message, index) => (
           <Card key={index} {...message} />
         ))}
