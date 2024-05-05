@@ -1,11 +1,10 @@
 import Card from "./Card";
 import playerPfp from "../../assets/images/playerPfp.png";
-import sendIcon from "../../assets/icons/sendIcon.svg";
-import { FormEvent, useRef, useState } from "react";
-
+import { useState } from "react";
+import { messageType } from "./types";
+import MessageInput from "./MessageInput";
 
 const Messages = () => {
-
   const [messages, setMessages] = useState([
     {
       player: {
@@ -14,58 +13,21 @@ const Messages = () => {
         name: "Criminal Azzict",
       },
       message: "i got hotdogs for sale by grove if anyone wanna pullup",
-    },
-    {
-      player: {
-        id: "xx",
-        image: playerPfp,
-        name: "Criminal Azzict",
-      },
-      message: "i got hotdogs for sale by grove if anyone wanna pullup",
-    },
-    {
-      player: {
-        id: "xx",
-        image: playerPfp,
-        name: "Criminal Azzict",
-      },
-      message: "i got hotdogs for sale by grove if anyone wanna pullup",
-    },
+    }
   ]);
-  
-  const msgRef = useRef<HTMLInputElement>(null);
-  
-  const addMessage = (e: FormEvent) => {
-    e.preventDefault();
-    const new_msg = {
-      player: {
-        id: "xx",
-        image: playerPfp,
-        name: "Criminal Azzict",
-      },
-      message: msgRef.current?.value || "",
-    };
+
+  const addMessage = (new_msg: messageType) => {
     setMessages([...messages, new_msg]);
-    msgRef.current!.value = "";
   }
 
-  const displayedMessages = messages.slice(-5);
-
   return (
-    <div className="space-y-2 w-[325px]">
-      {displayedMessages.map((message, index) => (
-        <Card key={index} {...message} />
-      ))}
-      <form className="relative" onSubmit={addMessage}>
-        <img src={sendIcon} alt="send" className="absolute top-1/2 -translate-y-1/2 left-2" />
-        <input
-          title="input"
-          aria-label="input message"
-          placeholder="Type here..."
-          className="bg-gradient-black border border-black border-opacity-40 font-noto font-bold text-[10px] text-lightergray rounded-lg py-2.5 px-3 pl-8 w-full focus:outline-none focus:border-lightgreen"
-          ref={msgRef}
-        />
-      </form>
+    <div className="space-y-2 w-[325px] 2xl:w-[400px] text-[10px] 2xl:text-[14px]">
+      <div className="max-h-[248px] overflow-y-auto space-y-2 hide-scrollbar">
+        {messages.map((message, index) => (
+          <Card key={index} {...message} />
+        ))}
+      </div>
+      <MessageInput addMessage={addMessage} />
     </div>
   );
 };

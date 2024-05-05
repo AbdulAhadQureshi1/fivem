@@ -27,3 +27,13 @@
 .bg-gradient-black {
   background: linear-gradient(90deg, rgba(0,0,0,0.32), rgba(0,0,0,0.17));
 }
+
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-scrollbar-width: none;
+  -moz-scrollbar-width: none;
+  -ms-scrollbar-width: none;
+  -o-scrollbar-width: none;
+  -ms-overflow-style: none;
+}
