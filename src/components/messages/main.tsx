@@ -1,10 +1,11 @@
 import Card from "./Card";
 import playerPfp from "../../assets/images/playerPfp.png";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { messageType } from "./types";
 import MessageInput from "./MessageInput";
 
 const Messages = () => {
+  const msgWrapperRef = useRef<HTMLDivElement>(null)
   const [messages, setMessages] = useState([
     {
       player: {
@@ -18,11 +19,15 @@ const Messages = () => {
 
   const addMessage = (new_msg: messageType) => {
     setMessages([...messages, new_msg]);
+    msgWrapperRef.current?.scrollTo({
+      top: msgWrapperRef.current?.scrollHeight,
+      behavior: "smooth",
+    });
   }
 
   return (
     <div className="space-y-2 w-[325px] 2xl:w-[400px] text-[10px] 2xl:text-[14px]">
-      <div className="max-h-[278px] overflow-y-auto space-y-2 hide-scrollbar">
+      <div className="max-h-[278px] overflow-y-auto space-y-2 hide-scrollbar" ref={msgWrapperRef}>
         {messages.map((message, index) => (
           <Card key={index} {...message} />
         ))}
