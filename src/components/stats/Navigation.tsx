@@ -26,10 +26,11 @@ const NavIcon: React.FC<NavIconProps> = ({ index, active, setActive, icon }) => 
   const isActive = index === active;
   const activeOuterStyles = isActive ? "border-white":"border-[#CACACA]"
   const activeInnerStyles = isActive ? "bg-lightgreen":"custom-bg"
+  const activeInner2Styles = isActive ? "custom-shadow-active":"custom-shadow"
   return (
     <button className={`w-10 h-10 2xl:w-14 2xl:h-14 border bg-white bg-opacity-15 backdrop-blur-xl rounded-xl p-1 ${activeOuterStyles}`} onClick={()=>setActive(index)}>
       <div className={`rounded-lg w-full h-full p-[3px] ${activeInnerStyles}`}>
-          <div className="bg-[#464646] w-full h-full flex justify-center items-center rounded-md">
+          <div className={`w-full h-full bg-[#616161] flex justify-center items-center rounded-md ${activeInner2Styles}`}>
             <img key={index} src={icon.icon} alt="icon" className="w-4 h-4 2xl:w-6 2xl:h-6" />
           </div>
       </div>

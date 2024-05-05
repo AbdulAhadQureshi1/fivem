@@ -55,3 +55,10 @@
       rgba(0,0,0,0.2) 25%
   );
 }
+
+.custom-shadow-active {
+  box-shadow: inset 0 0 8px rgba(95, 255, 3, 0.589);
+}
+.custom-shadow {
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.589);
+}
