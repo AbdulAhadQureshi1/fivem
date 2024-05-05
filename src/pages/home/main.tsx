@@ -1,6 +1,7 @@
 import Messages from "../../components/messages/main";
 import Notifications from "../../components/notifications/main";
 import { notificationType } from "../../components/notifications/types";
+import Stats from "../../components/stats/main";
 
 interface HomeProps {
   className?: string;
@@ -22,6 +23,7 @@ const Home: React.FC<HomeProps> = ({ className }) => {
     <div className={className}>
       <Messages />
       <Notifications notifications={notifications} />
+      <Stats />
     </div>
   );
 };

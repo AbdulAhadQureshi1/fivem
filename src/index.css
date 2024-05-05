@@ -5,30 +5,30 @@
 /* FONTS */
 
 @font-face {
-  font-family: 'heading-pro-wide-trial';
-  src: url('./assets/fonts/Heading-Pro-Wide-Bold-trial.ttf');
+  font-family: "heading-pro-wide-trial";
+  src: url("./assets/fonts/Heading-Pro-Wide-Bold-trial.ttf");
 }
 @font-face {
-  font-family: 'heading-pro-wide-trial-italic';
-  src: url('./assets/fonts/Heading-Pro-Wide-Bold-Italic-trial.ttf');
+  font-family: "heading-pro-wide-trial-italic";
+  src: url("./assets/fonts/Heading-Pro-Wide-Bold-Italic-trial.ttf");
 }
 
 .font-heading {
-  font-family: 'heading-pro-wide-trial', sans-serif;
+  font-family: "heading-pro-wide-trial", sans-serif;
 }
 .font-heading.font-italic {
-  font-family: 'heading-pro-wide-trial-italic', sans-serif;
+  font-family: "heading-pro-wide-trial-italic", sans-serif;
 }
 .font-noto {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
 }
 .font-kanit {
-  font-family: 'Kanit', sans-serif;
+  font-family: "Kanit", sans-serif;
 }
 
 /* UTILITY CLASSES */
 .bg-gradient-black {
-  background: linear-gradient(90deg, rgba(0,0,0,0.32), rgba(0,0,0,0.17));
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.17));
 }
 
 .hide-scrollbar {
@@ -39,4 +39,19 @@
   -ms-scrollbar-width: none;
   -o-scrollbar-width: none;
   -ms-overflow-style: none;
+}
+
+.custom-border {
+  border-image: linear-gradient(45deg,
+      #ffffff 75%,
+      #505050 0.5% 3.55357143%
+  );
+  border-image-slice: 1;
+  border-image-repeat: repeat;
+}
+.custom-bg {
+  background: linear-gradient(45deg,
+      #ffffff 80%,
+      rgba(0,0,0,0.2) 25%
+  );
 }
