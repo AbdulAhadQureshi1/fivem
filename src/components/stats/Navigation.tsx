@@ -15,15 +15,14 @@ const icons = [
 
 interface NavIconProps {
   index: number;
-  active: number;
+  isActive: boolean;
   setActive: (index: number) => void;
   icon: {
     icon: string;
     text: string;
   };
 }
-const NavIcon: React.FC<NavIconProps> = ({ index, active, setActive, icon }) => {
-  const isActive = index === active;
+const NavIcon: React.FC<NavIconProps> = ({ isActive, index, setActive, icon }) => {
   const activeOuterStyles = isActive ? "border-white":"border-[#CACACA]"
   const activeInnerStyles = isActive ? "bg-lightgreen":"custom-bg"
   const activeInner2Styles = isActive ? "custom-shadow-active":"custom-shadow"
@@ -31,7 +30,7 @@ const NavIcon: React.FC<NavIconProps> = ({ index, active, setActive, icon }) => 
     <button className={`w-10 h-10 2xl:w-14 2xl:h-14 border bg-white bg-opacity-15 backdrop-blur-xl rounded-xl p-1 ${activeOuterStyles}`} onClick={()=>setActive(index)}>
       <div className={`rounded-lg w-full h-full p-[3px] ${activeInnerStyles}`}>
           <div className={`w-full h-full bg-[#616161] flex justify-center items-center rounded-md ${activeInner2Styles}`}>
-            <img key={index} src={icon.icon} alt="icon" className="w-4 h-4 2xl:w-6 2xl:h-6" />
+            <img src={icon.icon} alt="icon" className="w-4 h-4 2xl:w-6 2xl:h-6" />
           </div>
       </div>
     </button>
@@ -46,7 +45,7 @@ const Navigation: React.FC<NavigationProps> = ({ active, setActive }) => {
   return (
     <div className="flex gap-1 2xl:gap-2">
       {icons.map((icon, index) => (
-        <NavIcon index={index} icon={icon} active={active} setActive={setActive} />
+        <NavIcon key={index} index={index} icon={icon} isActive={index===active} setActive={setActive} />
       ))}
     </div>
   );

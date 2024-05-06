@@ -1,14 +1,15 @@
-import { FormEvent, useRef } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import sendIcon from "../../assets/icons/sendIcon.svg";
 import playerPfp from "../../assets/images/playerPfp.png";
 import { messageType } from "./types";
 
 interface MsgInputProps {
   addMessage: (msg: messageType) => void;
+  getLastMessage: () => messageType;
 }
-const MessageInput: React.FC<MsgInputProps> = ({ addMessage }) => {
+const MessageInput: React.FC<MsgInputProps> = ({ addMessage, getLastMessage }) => {
   const msgRef = useRef<HTMLInputElement>(null);
-
+  
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     const msgValue = msgRef.current?.value;
@@ -24,6 +25,32 @@ const MessageInput: React.FC<MsgInputProps> = ({ addMessage }) => {
     addMessage(new_msg);
     msgRef.current!.value = "";
   };
+
+  const [keyPressed, setKeyPressed] = useState(false);
+  
+  useEffect(()=>{
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if(e.key === "ArrowUp") setKeyPressed(true);
+    }
+    const handleKeyUp = (e: KeyboardEvent) => {
+      if(e.key === "ArrowUp") setKeyPressed(false);
+    }
+    const msgInputField = msgRef.current;
+    msgInputField?.addEventListener("keydown", handleKeyDown);
+    msgInputField?.addEventListener("keyup", handleKeyUp);
+    return () => {
+      msgInputField?.removeEventListener("keydown", handleKeyDown);
+      msgInputField?.removeEventListener("keyup", handleKeyUp);
+    }
+  },[])
+
+  useEffect(()=>{
+    if(keyPressed) {
+      if (msgRef.current) {
+        msgRef.current.value = getLastMessage().message;
+      }
+    }
+  },[keyPressed, getLastMessage])
 
   return (
     <form className="relative" onSubmit={handleSubmit}>

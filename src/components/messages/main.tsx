@@ -1,6 +1,6 @@
 import Card from "./Card";
 import playerPfp from "../../assets/images/playerPfp.png";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { messageType } from "./types";
 import MessageInput from "./MessageInput";
 
@@ -19,10 +19,17 @@ const Messages = () => {
 
   const addMessage = (new_msg: messageType) => {
     setMessages([...messages, new_msg]);
+  }
+
+  useEffect(()=>{
     msgWrapperRef.current?.scrollTo({
       top: msgWrapperRef.current?.scrollHeight,
       behavior: "smooth",
     });
+  }, [messages])
+
+  const getLastMessage = () => {
+    return messages[messages.length - 1];
   }
 
   return (
@@ -32,7 +39,7 @@ const Messages = () => {
           <Card key={index} {...message} />
         ))}
       </div>
-      <MessageInput addMessage={addMessage} />
+      <MessageInput addMessage={addMessage} getLastMessage={getLastMessage} />
     </div>
   );
 };
